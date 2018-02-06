@@ -49,13 +49,13 @@ class TicTacToe
 				return "O"
 			end
     end
-
     def turn
     	puts "Please enter 1-9:"
 			input = gets.chomp
 			index = input_to_index(input)
   			if valid_move?(index)
     			move(index, current_player)
+          @board
     		else
     			puts "Invalid move, please enter 1-9:"
     			turn

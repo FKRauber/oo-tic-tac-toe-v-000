@@ -55,7 +55,6 @@ class TicTacToe
 			index = input_to_index(input)
   			if valid_move?(index)
     			move(index, current_player)
-          @board=board
     		else
     			puts "Invalid move, please enter 1-9:"
     			turn

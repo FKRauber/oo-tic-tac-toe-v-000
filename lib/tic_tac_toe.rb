@@ -1,4 +1,5 @@
 class TicTacToe
+  #------------------01_tic_tac_toe_spec------------------
   def initialize(board=nil)
     @board = board || Array.new(9, " ")
   end
@@ -81,5 +82,18 @@ class TicTacToe
 				return nil
 			end
     end
+
+    #------------------02_play_spec---------------------
+    def play
+			until over?
+				turn
+			end
+			if won?
+				puts "Congratulations #{winner}!"
+			else draw?
+				puts "Cat's Game!"
+			end
+    end
+
 
 end

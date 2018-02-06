@@ -42,54 +42,36 @@ class TicTacToe
     	end
     	counter
     end
-    
-
-    def current_player(board)
-			
-			if turn_count(board) % 2 == 0
-				
+    def current_player
+			if turn_count % 2 == 0
 				return "X"
-			
 			else
-				
 				return "O"
-			
 			end
-		
     end
 
-    def turn(board)
-    			
-    			puts "Please enter 1-9:"
-    			
-    			input = gets.chomp
-    			
-    			index = input_to_index(input)
-    			
-    			if valid_move?(board, index)
-    				
-    				move(board, index, current_player(board))
-    			
-    			else
-            
-    				puts "Invalid move, please enter 1-9:"
-    				
-    				turn(board)
-    			
-    			end
-    		
-    end
+    def turn
+    	puts "Please enter 1-9:"
+			input = gets.chomp
+			index = input_to_index(input)
+  			if valid_move?(index)
+    			move(index, current_player)
+    		else
+    			puts "Invalid move, please enter 1-9:"
+    			turn
+    		end
+     end
 
-    
+
 
     def won?(board)
-	
+
 			WIN_COMBINATIONS.find do |combo|
-			
+
 				board[combo[0]] == board[combo[1]] && board[combo[0]] == board[combo[2]] && position_taken?(board, combo[1])
-	
+
 			end
 
 		end
-  
+
 end

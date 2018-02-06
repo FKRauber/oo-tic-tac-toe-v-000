@@ -60,18 +60,11 @@ class TicTacToe
     			puts "Invalid move, please enter 1-9:"
     			turn
     		end
-     end
-
-
-
-    def won?(board)
-
+    end
+    def won?
 			WIN_COMBINATIONS.find do |combo|
-
-				board[combo[0]] == board[combo[1]] && board[combo[0]] == board[combo[2]] && position_taken?(board, combo[1])
-
+				@board[combo[0]] == @board[combo[1]] && @board[combo[0]] == @board[combo[2]] && position_taken?(combo[1])
 			end
-
 		end
 
 end

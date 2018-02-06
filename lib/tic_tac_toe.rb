@@ -30,4 +30,66 @@ class TicTacToe
   def position_taken?(index)
 			@board[index] == "X" || @board[index] == "O"
   end
+  def valid_move? (index)
+			index.between?(0, 8) && position_taken?(index) == false
+	end
+  def turn_count
+    	counter = 0
+    	@board.each do |space|
+    	   if space == "X" || space == "O"
+    			 counter += 1
+    		 end
+    	end
+    	counter
+    end
+    
+
+    def current_player(board)
+			
+			if turn_count(board) % 2 == 0
+				
+				return "X"
+			
+			else
+				
+				return "O"
+			
+			end
+		
+    end
+
+    def turn(board)
+    			
+    			puts "Please enter 1-9:"
+    			
+    			input = gets.chomp
+    			
+    			index = input_to_index(input)
+    			
+    			if valid_move?(board, index)
+    				
+    				move(board, index, current_player(board))
+    			
+    			else
+            
+    				puts "Invalid move, please enter 1-9:"
+    				
+    				turn(board)
+    			
+    			end
+    		
+    end
+
+    
+
+    def won?(board)
+	
+			WIN_COMBINATIONS.find do |combo|
+			
+				board[combo[0]] == board[combo[1]] && board[combo[0]] == board[combo[2]] && position_taken?(board, combo[1])
+	
+			end
+
+		end
+  
 end
